@@ -48,9 +48,10 @@ SITE_URL =  os.environ.get('SITE_URL', 'https://alifewellplayed.com/')
 SITE_AUTHOR = os.environ.get('SITE_AUTHOR', 'Tyler Rilling')
 ```
 
-to easily manage the site's configs, you can use os.environ.get() to expose it to, say, Heroku's config to make changes with out needing to edit the settings.py file directly.
+To easily manage the site's configs, you can use `os.environ.get()` to expose it to, say, Heroku's config to make changes with out needing to edit the settings.py file directly.
 
-#### 3. Add the middleware for subdomains (sidenote: The coreExtend middleware should be added as early as possible in MIDDLEWARE_CLASSES.):
+#### 3. Add the middleware for subdomains
+(sidenote: The coreExtend middleware should be added as early as possible in MIDDLEWARE_CLASSES.):
 
 ```
 MIDDLEWARE_CLASSES = (
