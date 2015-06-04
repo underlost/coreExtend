@@ -21,26 +21,32 @@ To get it working with your project, there's just a few things you need to chang
 
 #### 1. Include coreExtend in the installed apps:
 
-`INSTALLED_APPS = (
+```
+INSTALLED_APPS = (
 	...
     'coreExtend',
-)`
+)
+```
 
 #### 2. Add it to the context processors:
 
-`TEMPLATE_CONTEXT_PROCESSORS = {
+```
+TEMPLATE_CONTEXT_PROCESSORS = {
     ...
 	'coreExtend.context_processors.template_settings',
     'coreExtend.context_processors.template_times',
-}`
+}
+```
 
 Next define your site's settings, like so:
 
-`#Site Settings
+```
+#Site Settings
 SITE_NAME = os.environ.get('SITE_NAME', 'A Life Well Played')
 SITE_DESC =  os.environ.get('SITE_DESC', 'Video Game News Commentary')
 SITE_URL =  os.environ.get('SITE_URL', 'https://alifewellplayed.com/')
-SITE_AUTHOR = os.environ.get('SITE_AUTHOR', 'Tyler Rilling')`
+SITE_AUTHOR = os.environ.get('SITE_AUTHOR', 'Tyler Rilling')
+```
 
 to easily manage the site's configs, you can use os.environ.get() to expose it to, say, Heroku's config to make changes with out needing to edit the settings.py file directly.
 
