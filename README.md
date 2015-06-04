@@ -46,27 +46,35 @@ to easily manage the site's configs, you can use os.environ.get() to expose it t
 
 #### 3. Add the middleware for subdomains (sidenote: The coreExtend middleware should be added as early as possible in MIDDLEWARE_CLASSES.):
 
-`MIDDLEWARE_CLASSES = (
+```
+MIDDLEWARE_CLASSES = (
     'coreExtend.middleware.SubdomainURLRoutingMiddleware',
 	'coreExtend.middleware.MultipleProxyMiddleware',
     ...
-)`
+)
+```
 
 Then define your subdomains, if any, like so:
 
-`SUBDOMAIN_URLCONFS = {
+```
+SUBDOMAIN_URLCONFS = {
 	None: 'wellplayed.urls',
     'api': 'wellplayed.apps.replica.api.urls',
-}`
+}
+```
 
 Even if you do not define any subdomains in SUBDOMAIN_URLCONFS, `None` should still be defined with the urls.py, usually the same as what's defined in ROOT_URLCONF, or whatever you wish to choose.
 
 #### 4. Add coreExtend to your urls.py:
 
-`urlpatterns = patterns('',
+```
+urlpatterns = patterns('',
 
 	#admin
-	url(r'^admin42/', include(admin.site.urls)),
+	url(r'^admin/', include(admin.site.urls)),
 	url(r'^', include('coreExtend.urls', namespace='Core')),
     ...
-`
+)
+```
+
+It's important to notw the `Core` namespace here, as the urls are dependent on it.
