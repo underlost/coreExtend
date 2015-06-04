@@ -19,14 +19,14 @@ It really depends what you want to use. I opted out of creating a setup script b
 
 To get it working with your project, there's just a few things you need to change in settings.py:
 
-1. Include coreExtend in the installed apps:
+#### 1. Include coreExtend in the installed apps:
 
 `INSTALLED_APPS = (
 	...
     'coreExtend',
 )`
 
-2. Add it to the context processors:
+#### 2. Add it to the context processors:
 
 `TEMPLATE_CONTEXT_PROCESSORS = {
     ...
@@ -44,7 +44,7 @@ SITE_AUTHOR = os.environ.get('SITE_AUTHOR', 'Tyler Rilling')`
 
 to easily manage the site's configs, you can use os.environ.get() to expose it to, say, Heroku's config to make changes with out needing to edit the settings.py file directly.
 
-3. Add the middleware for subdomains (sidenote: The coreExtend middleware should be added as early as possible in MIDDLEWARE_CLASSES.):
+#### 3. Add the middleware for subdomains (sidenote: The coreExtend middleware should be added as early as possible in MIDDLEWARE_CLASSES.):
 
 `MIDDLEWARE_CLASSES = (
     'coreExtend.middleware.SubdomainURLRoutingMiddleware',
@@ -61,7 +61,7 @@ Then define your subdomains, if any, like so:
 
 Even if you do not define any subdomains in SUBDOMAIN_URLCONFS, `None` should still be defined with the urls.py, usually the same as what's defined in ROOT_URLCONF, or whatever you wish to choose.
 
-4. Add coreExtend to your urls.py:
+#### 4. Add coreExtend to your urls.py:
 
 `urlpatterns = patterns('',
 
